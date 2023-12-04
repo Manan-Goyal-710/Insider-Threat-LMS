@@ -36,7 +36,7 @@ pipeline {
         // This stage is pushing images to dockerhub.
         stage('Push Images to Hub') {
             steps {
-                withDockerRegistry([ credentialsId: "shivank-dockerhub", url: "" ]) {
+                withDockerRegistry([ credentialsId: "gurchet-dockerhub", url: "" ]) {
                     bat 'docker push gurchetbawa/capstone:frontend'
                     bat 'docker push gurchetbawa/capstone:backend'
                 }
