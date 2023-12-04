@@ -11,17 +11,17 @@ pipeline {
             }
         }
         
-        // This stage is telling Jenkins to run in the frontend directory and backend directory.
-        stage('Install Dependencies') {
-            steps {
-                dir('client') {
-                    bat 'npm.cmd install'
-                }
-                  dir('server') {
-                    bat 'npm.cmd install'
-                }
-            }
-        }
+        // // This stage is telling Jenkins to run in the frontend directory and backend directory.
+        // stage('Install Dependencies') {
+        //     steps {
+        //         dir('client') {
+        //             bat 'npm.cmd install'
+        //         }
+        //           dir('server') {
+        //             bat 'npm.cmd install'
+        //         }
+        //     }
+        // }
        
         
         // This stage is telling Jenkins to build the images for the frontend.
