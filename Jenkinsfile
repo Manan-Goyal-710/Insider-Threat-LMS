@@ -28,8 +28,8 @@ pipeline {
         stage('Build Frontend and Backend Images') {
             steps {
                 script {
-                    bat 'docker build -t gurchetbawa/capstone:frontend client'
-                    bat 'docker build -t gurchetbawa/capstone:backend server'
+                    sh 'docker build -t gurchetbawa/capstone:frontend client'
+                    sh 'docker build -t gurchetbawa/capstone:backend server'
                 }
             }
         }
@@ -37,8 +37,8 @@ pipeline {
         stage('Push Images to Hub') {
             steps {
                 withDockerRegistry([ credentialsId: "gurchet-dockerhub", url: "" ]) {
-                    bat 'docker push gurchetbawa/capstone:frontend'
-                    bat 'docker push gurchetbawa/capstone:backend'
+                    sh 'docker push gurchetbawa/capstone:frontend'
+                    sh 'docker push gurchetbawa/capstone:backend'
                 }
             }
         }
