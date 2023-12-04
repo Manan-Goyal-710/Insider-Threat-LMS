@@ -28,8 +28,8 @@ pipeline {
         stage('Build Frontend and Backend Images') {
             steps {
                 script {
-                    bat 'docker buildx -t gurchetbawa/capstone:frontend client .'
-                    bat 'docker buildx -t gurchetbawa/capstone:backend server .'
+                    bat 'docker build -t gurchetbawa/capstone:frontend client .'
+                    bat 'docker build -t gurchetbawa/capstone:backend server .'
                 }
             }
         }
