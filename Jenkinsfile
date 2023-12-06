@@ -34,14 +34,14 @@ pipeline {
             }
         }
         // This stage is pushing images to dockerhub.
-        // stage('Push Images to Hub') {
-        //     steps {
-        //         withDockerRegistry([ credentialsId: "latika-dockerhub", url: "" ]) {
-        //             bat 'docker push latikasharma/capstone:frontend'
-        //             bat 'docker push latikasharma/capstone:backend'
-        //         }
-        //     }
-        // }
+        stage('Push Images to Hub') {
+            steps {
+                withDockerRegistry([ credentialsId: "manan-dockerhub", url: "" ]) {
+                    bat 'docker push manangoyal/calculator:frontend'
+                    bat 'docker push manangoyal/calculator:backend'
+                }
+            }
+        }
     }
     post {
         always {
