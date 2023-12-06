@@ -28,15 +28,15 @@ pipeline {
         stage('Build Frontend and Backend Images') {
             steps {
                 script {
-                    bat 'docker build -t gurchetbawa/capstone:frontend client .'
-                    bat 'docker build -t gurchetbawa/capstone:backend server .'
+                    bat 'docker buildx -t gurchetbawa/capstone:frontend client .'
+                    bat 'docker buildx -t gurchetbawa/capstone:backend server .'
                 }
             }
         }
         // This stage is pushing images to dockerhub.
         stage('Push Images to Hub') {
             steps {
-                withDockerRegistry([ credentialsId: "manan-dockerhub", url: "" ]) {
+                withDockerRegistry([ credentialsId: "latika-dockerhub", url: "" ]) {
                     bat 'docker push gurchetbawa/capstone:frontend'
                     bat 'docker push gurchetbawa/capstone:backend'
                 }
