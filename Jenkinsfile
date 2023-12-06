@@ -56,7 +56,7 @@ pipeline {
                         <p>Build URL: ${BUILD_URL}</p>
                         </html>''',
                 subject: 'Build Failure',
-                to: 'gurchet.bawa20@st.niituniversity.in, latika.sharma20@st.niituniversity.in'
+                to: 'gurchet.bawa20@st.niituniversity.in, latika.sharma20@st.niituniversity.in',
                 mimeType: 'text/html'
             )
         }
