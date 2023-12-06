@@ -37,8 +37,8 @@ pipeline {
         stage('Push Images to Hub') {
             steps {
                 withDockerRegistry([ credentialsId: "latika-dockerhub", url: "" ]) {
-                    bat 'docker push gurchetbawa/capstone:frontend'
-                    bat 'docker push gurchetbawa/capstone:backend'
+                    bat 'docker push latikasharma/capstone:frontend'
+                    bat 'docker push latikasharma/capstone:backend'
                 }
             }
         }
