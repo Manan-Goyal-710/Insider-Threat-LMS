@@ -23,6 +23,14 @@ pipeline {
             }
         }
        
+        stage('Unit Testing') {
+            steps {
+                  dir('server') {
+                    bat 'npm.cmd test'
+                }
+            }
+        }
+       
         
         // This stage is telling Jenkins to build the images for the frontend.
         stage('Build Frontend and Backend Images') {
