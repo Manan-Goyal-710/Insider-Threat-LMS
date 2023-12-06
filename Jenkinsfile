@@ -11,37 +11,37 @@ pipeline {
             }
         }
         
-        // // This stage is telling Jenkins to run in the frontend directory and backend directory.
-        // stage('Install Dependencies') {
-        //     steps {
-        //         dir('client') {
-        //             bat 'npm.cmd install'
-        //         }
-        //           dir('server') {
-        //             bat 'npm.cmd install'
-        //         }
-        //     }
-        // }
+        // This stage is telling Jenkins to run in the frontend directory and backend directory.
+        stage('Install Dependencies') {
+            steps {
+                dir('client') {
+                    bat 'npm.cmd install'
+                }
+                  dir('server') {
+                    bat 'npm.cmd install'
+                }
+            }
+        }
        
         
         // This stage is telling Jenkins to build the images for the frontend.
         stage('Build Frontend and Backend Images') {
             steps {
                 script {
-                    bat 'docker buildx -t gurchetbawa/capstone:frontend client .'
-                    bat 'docker buildx -t gurchetbawa/capstone:backend server .'
+                    bat 'docker build -t manangoyal/calculator:frontend client'
+                    bat 'docker build -t manangoyal/calculator:backend server'
                 }
             }
         }
         // This stage is pushing images to dockerhub.
-        stage('Push Images to Hub') {
-            steps {
-                withDockerRegistry([ credentialsId: "latika-dockerhub", url: "" ]) {
-                    bat 'docker push latikasharma/capstone:frontend'
-                    bat 'docker push latikasharma/capstone:backend'
-                }
-            }
-        }
+        // stage('Push Images to Hub') {
+        //     steps {
+        //         withDockerRegistry([ credentialsId: "latika-dockerhub", url: "" ]) {
+        //             bat 'docker push latikasharma/capstone:frontend'
+        //             bat 'docker push latikasharma/capstone:backend'
+        //         }
+        //     }
+        // }
     }
     post {
         always {
